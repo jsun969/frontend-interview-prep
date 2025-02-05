@@ -20,25 +20,19 @@ const secondsToTimeString = (duration) => {
 	return `${minutesStr}:${secondsStr}`;
 };
 
-const data = new Proxy(
-	{ remain: 0 },
-	{
-		set: (target, prop, newValue, receiver) => {
-			const timeStr = secondsToTimeString(newValue);
-			timerElement.innerText = timeStr;
-			return Reflect.set(target, prop, newValue, receiver);
-		},
+const initialData = { remain: 0 };
+const data = new Proxy(initialData, {
+	set: (target, prop, newValue, receiver) => {
+		// update timer
+		const timeStr = secondsToTimeString(newValue);
+		timerElement.innerText = timeStr;
+		return Reflect.set(target, prop, newValue, receiver);
 	},
-);
+});
 
 let intervalId = null;
 
-resetButtonElement.addEventListener('click', () => {
-	clearInterval(intervalId);
-	data.remain = 0;
-});
-
-startButtonElement.addEventListener('click', () => {
+const startTimer = () => {
 	// check if there's new input and reset timer
 	if (durationInputElement.value) {
 		data.remain = Number(durationInputElement.value);
@@ -55,8 +49,15 @@ startButtonElement.addEventListener('click', () => {
 		}
 		data.remain--;
 	}, 1000);
-});
-
-stopButtonElement.addEventListener('click', () => {
+};
+const stopTimer = () => {
 	clearInterval(intervalId);
-});
+};
+const resetTimer = () => {
+	clearInterval(intervalId);
+	data.remain = 0;
+};
+
+resetButtonElement.addEventListener('click', resetTimer);
+startButtonElement.addEventListener('click', startTimer);
+stopButtonElement.addEventListener('click', stopTimer);
