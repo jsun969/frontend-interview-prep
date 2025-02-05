@@ -24,8 +24,10 @@ const initialData = { remain: 0 };
 const data = new Proxy(initialData, {
 	set: (target, prop, newValue, receiver) => {
 		// update timer
-		const timeStr = secondsToTimeString(newValue);
-		timerElement.innerText = timeStr;
+		if (prop === 'remain') {
+			const timeStr = secondsToTimeString(newValue);
+			timerElement.innerText = timeStr;
+		}
 		return Reflect.set(target, prop, newValue, receiver);
 	},
 });
