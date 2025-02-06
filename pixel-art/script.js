@@ -16,7 +16,7 @@ boardElement.addEventListener('mousedown', enableDrawing);
 boardElement.addEventListener('mouseup', disableDrawing);
 boardElement.addEventListener('mouseleave', disableDrawing);
 
-const createPixel = (_) => {
+const createPixel = () => {
 	const pixel = document.createElement('div');
 	pixel.className = 'pixel';
 	pixel.addEventListener('mouseover', () => {
