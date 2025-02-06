@@ -1,0 +1,25 @@
+:root {
+	--size: 30;
+}
+
+.pixel {
+	width: 1rem;
+	height: 1rem;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+}
+
+#board {
+	display: grid;
+	grid-template-columns: repeat(var(--size), minmax(0, 1fr));
+	width: fit-content;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+}
+/* Alternative way to set border */
+/* .pixel:nth-child(30n) {
+	border-right-width: 1px;
+}
+.pixel:nth-child(-n + 30) {
+	border-top-width: 1px;
+} */
