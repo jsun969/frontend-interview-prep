@@ -41,7 +41,8 @@ const setDigit = (unit, index, number) => {
 	});
 };
 
-setInterval(() => {
+const updateClock = () => {
+	requestAnimationFrame(updateClock);
 	const now = new Date();
 	const hour = now.getHours();
 	const minute = now.getMinutes();
@@ -55,4 +56,6 @@ setInterval(() => {
 	setDigit('minute', 1, minuteStr[1]);
 	setDigit('second', 0, secondStr[0]);
 	setDigit('second', 1, secondStr[1]);
-}, 1000);
+};
+
+updateClock();

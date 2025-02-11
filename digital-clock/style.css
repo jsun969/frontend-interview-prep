@@ -80,4 +80,17 @@
 
 .colon {
 	font-size: 6rem;
+	animation: 2s ease-in-out 0s both infinite blink;
+}
+
+@keyframes blink {
+	0% {
+		color: whitesmoke;
+	}
+	50% {
+		color: black;
+	}
+	100% {
+		color: whitesmoke;
+	}
 }
