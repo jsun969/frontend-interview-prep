@@ -167,6 +167,14 @@ like web worker which can create another thread
 - `attribute` - static(initial) value defined in HTML. access with `getAttribute` `setAttribute`.
 - `property` - dynamic. can be changed by user interaction.
 
+### `apply` `call` `bind`
+
+Change `this`
+
+- `apply` this + args in array
+- `call` (syntactic sugar for `apply`) this + args not in array
+- `bind` (return a new function) this
+
 ## CSS
 
 ### Box models
@@ -181,6 +189,19 @@ tldr: printer
 - `all`: for all media type devices
 - `print`: for printers
 - `screen`: for computer screens, tablets, smart-phones etc.
+
+### `box-sizing`
+
+- `content-box` exclude padding and border
+- `border-box` include padding and border
+
+### `link` vs `@import`
+
+- `@import` is loaded after loading webpage
+- `@import` can be added by js dynamically
+- `rel` (relationship) of `link` can be other than `stylesheet` (css)
+
+<!-- ### `flex` -->
 
 ## React
 
