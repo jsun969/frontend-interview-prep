@@ -66,7 +66,7 @@ document.addEventListener('keydown', ({ key }) => {
 		appendSymbol(key);
 	} else if (key === 'c' || key === 'C') {
 		clearCalculator();
-	} else if (key === '=') {
+	} else if (key === '=' || key === 'Enter') {
 		getResult();
 	}
 });
