@@ -1,0 +1,77 @@
+#calculator {
+	display: grid;
+	width: min-content;
+	font-family: sans-serif;
+	gap: 0.2rem;
+	grid-template:
+		'result result result result'
+		'seven eight nine clear'
+		'four five six plus'
+		'one two three minus'
+		'zero zero point multiply'
+		'equal equal equal divide';
+}
+
+#result {
+	grid-area: result;
+	border: 1px solid;
+	text-align: right;
+	min-height: 1.2rem;
+}
+
+button:active,
+.button-active {
+	filter: invert(1);
+}
+
+#one {
+	grid-area: one;
+}
+#two {
+	grid-area: two;
+}
+#three {
+	grid-area: three;
+}
+#four {
+	grid-area: four;
+}
+#five {
+	grid-area: five;
+}
+#six {
+	grid-area: six;
+}
+#seven {
+	grid-area: seven;
+}
+#eight {
+	grid-area: eight;
+}
+#nine {
+	grid-area: nine;
+}
+#zero {
+	grid-area: zero;
+}
+#point {
+	grid-area: point;
+}
+#equal {
+	grid-area: equal;
+}
+#clear {
+	grid-area: clear;
+}
+#plus {
+	grid-area: plus;
+}
+#minus {
+	grid-area: minus;
+}
+#multiply {
+	grid-area: multiply;
+}
+#divide {
+	grid-area: divide;
+}
