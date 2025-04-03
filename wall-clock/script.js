@@ -30,7 +30,7 @@ const updateClock = () => {
 	const minutes = now.getMinutes();
 	const seconds = now.getSeconds();
 	const secondDegree = seconds * 6;
-	const minuteDegree = minutes * 6;
+	const minuteDegree = minutes * 6 + seconds * 0.1;
 	const hourDegree = (hours % 12) * 30 + minutes * 0.5;
 	secondHand.style.transform = `rotate(${secondDegree}deg)`;
 	minuteHand.style.transform = `rotate(${minuteDegree}deg)`;
