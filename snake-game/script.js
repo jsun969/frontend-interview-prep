@@ -45,6 +45,8 @@ document.addEventListener('keydown', (event) => {
 	const newDirection = KEY_TO_DIRECTION[event.key];
 	if (currentDirection === INVALID_DIRECTION[newDirection]) {
 		// Prevent reversing direction directly
+		// FIXME: Sometimes pressing 2 directions quickly will cause a bug which turns directly
+		// e.g. when moving left, press down + right
 		return;
 	}
 	currentDirection = newDirection;
