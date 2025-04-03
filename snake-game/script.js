@@ -109,13 +109,13 @@ const getRandomInt = (max) => {
 	return Math.floor(Math.random() * max);
 };
 const generateApple = () => {
-	const newAppleX = getRandomInt(49);
-	const newAppleY = getRandomInt(49);
+	const newAppleX = getRandomInt(5);
+	const newAppleY = getRandomInt(5);
+	apple = [newAppleX, newAppleY];
 	const appleOnSnake = snake.some(
 		([snakeX, snakeY]) => newAppleX === snakeX && newAppleY === snakeY,
 	);
 	if (appleOnSnake) generateApple();
-	apple = [newAppleX, newAppleY];
 };
 
 const speedInput = document.getElementById('speed');
