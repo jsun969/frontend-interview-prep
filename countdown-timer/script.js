@@ -35,6 +35,7 @@ const data = new Proxy(initialData, {
 let intervalId = null;
 
 const startTimer = () => {
+	if (intervalId) return;
 	// check if there's new input and reset timer
 	if (durationInputElement.value) {
 		data.remain = Number(durationInputElement.value);
@@ -47,6 +48,7 @@ const startTimer = () => {
 	intervalId = setInterval(() => {
 		if (data.remain === 0) {
 			clearInterval(intervalId);
+			intervalId = null;
 			return;
 		}
 		data.remain--;
@@ -54,9 +56,11 @@ const startTimer = () => {
 };
 const stopTimer = () => {
 	clearInterval(intervalId);
+	intervalId = null;
 };
 const resetTimer = () => {
 	clearInterval(intervalId);
+	intervalId = null;
 	data.remain = 0;
 };
 
