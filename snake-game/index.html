@@ -14,6 +14,26 @@
 			width="500"
 			height="500"
 		></canvas>
-		<button style="margin-top: 1rem" id="restart-button">RESTART</button>
+		<div
+			style="
+				margin-top: 1rem;
+				width: 500px;
+				display: flex;
+				justify-content: space-between;
+			"
+		>
+			<div>
+				<input
+					type="range"
+					name="speed"
+					id="speed"
+					min="-150"
+					max="-50"
+					step="10"
+				/>
+				<label for="speed">Speed</label>
+			</div>
+			<button id="restart-button">RESTART</button>
+		</div>
 	</body>
 </html>

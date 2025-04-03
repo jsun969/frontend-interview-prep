@@ -53,7 +53,13 @@ document.addEventListener('keydown', (event) => {
 const getNewHead = () => {
 	const [headX, headY] = snake[0];
 	const [directionX, directionY] = DIRECTIONS[currentDirection];
-	const newHead = [headX + directionX, headY + directionY];
+	let newHeadX = headX + directionX;
+	if (newHeadX < 0) newHeadX = 49;
+	if (newHeadX > 49) newHeadX = 0;
+	let newHeadY = headY + directionY;
+	if (newHeadY < 0) newHeadY = 49;
+	if (newHeadY > 49) newHeadY = 0;
+	const newHead = [newHeadX, newHeadY];
 	return newHead;
 };
 
@@ -70,12 +76,12 @@ const updateSnake = () => {
 	eatApple(newHead);
 };
 const checkGameOver = ([newHeadX, newHeadY]) => {
-	const hitBorder =
-		newHeadX < 0 || newHeadX > 49 || newHeadY < 0 || newHeadY > 49;
+	// const hitBorder =
+	// 	newHeadX < 0 || newHeadX > 49 || newHeadY < 0 || newHeadY > 49;
 	const hitBody = snake.some(
 		([bodyX, bodyY]) => newHeadX === bodyX && newHeadY === bodyY,
 	);
-	return hitBorder || hitBody;
+	return hitBody;
 };
 const eatApple = ([newHeadX, newHeadY]) => {
 	const [appleX, appleY] = apple;
@@ -103,16 +109,27 @@ const getRandomInt = (max) => {
 	return Math.floor(Math.random() * max);
 };
 const generateApple = () => {
-	apple = [getRandomInt(49), getRandomInt(49)];
+	const newAppleX = getRandomInt(49);
+	const newAppleY = getRandomInt(49);
+	const appleOnSnake = snake.some(
+		([snakeX, snakeY]) => newAppleX === snakeX && newAppleY === snakeY,
+	);
+	if (appleOnSnake) generateApple();
+	apple = [newAppleX, newAppleY];
 };
+
+const speedInput = document.getElementById('speed');
 
 const startGame = () => {
 	snake = [...INIT_SNAKE];
 	currentDirection = 'right';
+	const speed = -speedInput.valueAsNumber;
 	generateApple();
-	if (!gameLoopIntervalId) {
-		gameLoopIntervalId = setInterval(gameLoop, 100);
+	if (gameLoopIntervalId) {
+		clearInterval(gameLoopIntervalId);
+		gameLoopIntervalId = null;
 	}
+	gameLoopIntervalId = setInterval(gameLoop, speed);
 };
 
 const restartButton = document.getElementById('restart-button');
