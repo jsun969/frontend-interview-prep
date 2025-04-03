@@ -1,0 +1,54 @@
+#clock {
+	height: 24rem;
+	width: 24rem;
+	border-radius: 100%;
+	position: relative;
+	border: 1px black solid;
+}
+
+.number {
+	position: absolute;
+	height: 2rem;
+	width: 2rem;
+	text-align: center;
+	align-content: center;
+	font-weight: bold;
+	font-size: larger;
+}
+
+#center {
+	height: 1rem;
+	width: 1rem;
+	border-radius: 100%;
+	background-color: black;
+	position: absolute;
+	top: 11.5rem;
+	left: 11.5rem;
+}
+
+.hand {
+	position: absolute;
+	bottom: 12rem;
+	transform-origin: bottom center;
+}
+
+#hour-hand {
+	width: 0.6rem;
+	height: 4rem;
+	background-color: black;
+	left: 11.7rem;
+}
+
+#minute-hand {
+	width: 0.4rem;
+	height: 7rem;
+	background-color: black;
+	left: 11.8rem;
+}
+
+#second-hand {
+	width: 0.2rem;
+	height: 9rem;
+	background-color: black;
+	left: 11.9rem;
+}
